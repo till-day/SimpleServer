@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname+'/views/parts');
@@ -21,7 +22,7 @@ app.use((request, response, next)=>{
 });
 
 app.use((request, response, next)=>{
-  
+
   response.render('down.hbs', {
     pageHeader: 'Server Maintaince',
     pageTitle: 'Tango Down'
@@ -63,6 +64,6 @@ app.get('/bad', (request, response)=> {
   });
 });
 
-app.listen(3000, ()=>{
-  console.log('Server Listening on port 3000');
+app.listen(port, ()=>{
+  console.log(`Server Listening on port ${port}`);
 }); //port
