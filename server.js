@@ -21,13 +21,13 @@ app.use((request, response, next)=>{
   next();
 });
 
-app.use((request, response, next)=>{
-
-  response.render('down.hbs', {
-    pageHeader: 'Server Maintaince',
-    pageTitle: 'Tango Down'
-  });
-});
+// app.use((request, response, next)=>{
+//
+//   response.render('down.hbs', {
+//     pageHeader: 'Server Maintaince',
+//     pageTitle: 'Tango Down'
+//   });
+// });
 
 hbs.registerHelper('getCurrentYear', ()=>{
   return new Date().getFullYear();
@@ -50,6 +50,13 @@ app.get('/', (request, response)=>{
 app.get('/help', (request, response)=>{
   response.render('help.hbs', {
     pageTitle: 'Help Page',
+    currentYear: new Date().getFullYear()
+  })
+});
+
+app.get('/project', (request, response)=>{
+  response.render('project.hbs', {
+    pageTitle: 'Projects Page',
     currentYear: new Date().getFullYear()
   })
 });
